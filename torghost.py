@@ -14,8 +14,6 @@ from packaging import version
 
 VERSION = "3.1.1"
 
-IP_API = "https://api.ipify.org/?format=json"
-
 LATEST_RELEASE_API = "https://api.github.com/repos/SusmithKrishnan/torghost/releases/latest"
 
 
@@ -72,14 +70,8 @@ def usage():
 
 
 def ip():
-    while True:
-        try:
-            jsonRes = get(IP_API).json()
-            ipTxt = jsonRes["ip"]
-        except:
-            continue
-        break
-    return ipTxt
+    ip = get('https://api.ipify.org').content.decode('utf8')
+    return ip
 
 
 def check_root():
